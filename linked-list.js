@@ -89,19 +89,19 @@ class LinkedList {
     }
   }
 
-  contains(value) {
+  containsKey(key) {
     if (this.head == null) {
       this.printError_ListEmpty();
     } else {
       let tmp = this.head;
-      while (tmp != null && tmp.value != value) {
+      while (tmp != null && tmp.key != key) {
         tmp = tmp.nextNode;
       }
       if (tmp == null) {
-        console.log(`${value} was not found`);
+        console.log(`${key} was not found`);
         return false;
       } else {
-        console.log(`Found value: ${tmp.value}`);
+        console.log(`Found value: ${tmp.key}`);
         return true;
       }
     }
@@ -123,6 +123,25 @@ class LinkedList {
       } else {
         console.log(`Found value: ${tmp.value} at index: ${index}`);
         return index;
+      }
+    }
+  }
+
+  changeAtKey(key, value) {
+    if (this.head == null) {
+      this.printError_ListEmpty();
+    } else {
+      let tmp = this.head;
+      while (tmp != null && tmp.key != key) {
+        tmp = tmp.nextNode;
+      }
+      if (tmp == null) {
+        console.log(`${key} was not found`);
+        return false;
+      } else {
+        console.log(tmp);
+        tmp.value = value;
+        console.log(tmp);
       }
     }
   }
