@@ -13,8 +13,8 @@
 import { LinkedList } from "./linked-list.js";
 
 class HashMap {
-  constructor(capacity = 16, loadFactor = 0.75) {
-    this.capacity = capacity;
+  constructor(loadFactor = 0.75) {
+    this.capacity = 16;
     this.loadFactor = loadFactor;
   }
 
@@ -34,20 +34,18 @@ class HashMap {
   set(key, value) {
     let hashCode = this.hash(key);
     let bucket = hashCode % 16;
+    console.log(this);
 
     console.log(`${value} ${key} goes to bucket: ${bucket}`);
-    if (this[bucket] == undefined) {
+    if (this[bucket] != undefined && this[bucket].containsKey(key)) {
+      this[bucket].changeAtKey(key, value);
+    }
+    if (this[bucket] != undefined) {
+      this[bucket].append(key, value);
+    } else {
       this[bucket] = new LinkedList();
       this[bucket].append(key, value);
-      console.log(this[bucket]);
-    } else {
-      console.log(this[bucket]);
-      this[bucket].append(key, value);
     }
-
-    // use modulo of 16, which should return a # between 1 and 16
-    // assign key to the corresponding bucket
-    // if key exists in bucket and is === to new key, overwrite existing key
   }
 
   get(key, value) {}
