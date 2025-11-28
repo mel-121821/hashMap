@@ -107,22 +107,19 @@ class LinkedList {
     }
   }
 
-  find(value) {
+  find(key) {
     if (this.head == null) {
       this.printError_ListEmpty();
     } else {
-      let index = 0;
       let tmp = this.head;
-      while (tmp != null && tmp.value != value) {
+      while (tmp != null && tmp.key != key) {
         tmp = tmp.nextNode;
-        index++;
       }
       if (tmp == null) {
-        console.log(`${value} was not found`);
-        return false;
+        console.log(`${key} was not found`);
+        return null;
       } else {
-        console.log(`Found value: ${tmp.value} at index: ${index}`);
-        return index;
+        return tmp.value;
       }
     }
   }
