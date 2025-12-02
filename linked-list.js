@@ -184,25 +184,25 @@ class LinkedList {
     }
   }
 
-  removeAt(index) {
+  removeKey(key) {
     if (this.head == null) {
       this.printError_ListEmpty();
     } else {
-      let counter = 0;
       let prev = null;
       let current = this.head;
-      while (current != null && counter < index) {
+      while (current != null && current.key != key) {
         prev = current;
         current = current.nextNode;
-        counter++;
       }
       if (current == null) {
-        console.log(
-          `There is no value at index: ${index}, so nothing was removed`
-        );
+        console.log(`There is no key called: ${key}, so nothing was removed`);
       } else {
-        console.log(`Removed ${current.value} at index: ${index}`);
-        prev.nextNode = current.nextNode;
+        console.log(`Removed ${current.key}.`);
+        if (prev == null) {
+          this.head = current.nextNode;
+        } else {
+          prev.nextNode = current.nextNode;
+        }
       }
     }
   }
