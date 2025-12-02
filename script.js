@@ -62,17 +62,33 @@ class HashMap {
   }
 
   get(key) {
-    // return the value that is assigned to that key
-    // Pseudocode:
     let index = this.hash(key);
     console.log(index);
-
-    return this.buckets[index].find(key);
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    } else {
+      return this.buckets[index].find(key);
+    }
   }
 
-  has(key) {}
+  has(key) {
+    let index = this.hash(key);
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    } else {
+      return this.buckets[index].containsKey(key);
+    }
+  }
 
-  remove(key) {}
+  remove(key) {
+    let index = this.hash(key);
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    } else {
+      this.buckets[index].removeKey(key);
+      console.log(this.buckets[index]);
+    }
+  }
 
   length() {}
 
