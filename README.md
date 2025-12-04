@@ -2,21 +2,21 @@
 
 ### Instructions
 
-- [] Start by creating a `HashMap` class or factory function.
+- [x] Start by creating a `HashMap` class or factory function.
 
-- [] It should have at least two variables for `load factor` and `capacity`. For a load factor of 0.75 you should have an initial capacity of size 16.
+- [x] It should have at least two variables for `load factor` and `capacity`. For a load factor of 0.75 you should have an initial capacity of size 16.
 
 Then proceed to create the following methods:
 
-- [] `hash(key)` takes a key and produces a hash code with it.
+- [x] `hash(key)` takes a key and produces a hash code with it.
 
-- [] `set(key, value)` takes two arguments: the first is a key, and the second is a value that is assigned to this key. If a key already exists, then the old value is overwritten.
+- [x] `set(key, value)` takes two arguments: the first is a key, and the second is a value that is assigned to this key. If a key already exists, then the old value is overwritten.
 
-- [] `get(key)` takes one argument as a key and returns the value that is assigned to this key. If a key is not found, return `null`.
+- [x] `get(key)` takes one argument as a key and returns the value that is assigned to this key. If a key is not found, return `null`.
 
-- [] `has(key)` takes a key as an argument and returns true or false based on whether or not the key is in the hash map.
+- [x] `has(key)` takes a key as an argument and returns true or false based on whether or not the key is in the hash map.
 
-- [] `remove(key)` takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return true. If the key isn’t in the hash map, it should return `false`.
+- [x] `remove(key)` takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return true. If the key isn’t in the hash map, it should return `false`.
 
 - [] `length()` returns the number of stored keys in the hash map.
 
@@ -79,5 +79,10 @@ test.set('moon', 'silver')
 ---
 
 ### Resources
+
+Array.from:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+
+https://www.programiz.com/javascript/library/array/from
 
 ---
