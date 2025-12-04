@@ -17,8 +17,23 @@ class HashMap {
     this.capacity = 16;
     this.loadFactor = loadFactor;
 
-    // create an array with a length of capacity
-    this.buckets = new Array(this.capacity);
+    // TODO: Remove following line and replace with fn() that creates a linked list for every element
+
+    // this.buckets = new Array(this.capacity);
+
+    // TODO: (COMPLETE) use Array.from method with mapFn to create the linked list for each element
+
+    // src: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+    // src: https://www.programiz.com/javascript/library/array/from
+
+    // Pseudocode
+    // Array.from(items, mapFn)
+    // items == this.capacity
+    // mapFn == new Linkedlist
+    this.buckets = Array.from({ length: this.capacity }, () => {
+      return new LinkedList();
+    });
+
     console.log(this.buckets);
     console.log(this.buckets.length);
   }
@@ -37,28 +52,16 @@ class HashMap {
 
   set(key, value) {
     let index = this.hash(key);
-
     console.log(`${value} ${key} goes to bucket: ${index}`);
-
     if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bounds");
     } else {
-      if (
-        this.buckets[index] != undefined &&
-        this.buckets[index].containsKey(key)
-      ) {
+      if (this.buckets[index].containsKey(key)) {
         this.buckets[index].changeAtKey(key, value);
-      } else if (this.buckets[index] != undefined) {
-        this.buckets[index].append(key, value);
       } else {
-        this.buckets[index] = new LinkedList();
         this.buckets[index].append(key, value);
       }
     }
-
-    // use modulo of 16, which should return a # between 1 and 16
-    // assign key to the corresponding bucket
-    // if key exists in bucket and is === to new key, overwrite existing key
   }
 
   get(key) {
@@ -82,6 +85,7 @@ class HashMap {
 
   remove(key) {
     let index = this.hash(key);
+    console.log(index);
     if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bounds");
     } else {
