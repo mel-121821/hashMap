@@ -187,7 +187,7 @@ class LinkedList {
 
   removeKey(key) {
     if (this.head == null) {
-      this.printError_ListEmpty();
+      console.log(`There is no key called: ${key}, so nothing was removed`);
     } else {
       let prev = null;
       let current = this.head;
