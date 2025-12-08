@@ -86,7 +86,13 @@ class HashMap {
     return sum;
   }
 
-  clear() {}
+  clear() {
+    for (const bucket of this.buckets) {
+      if (bucket.head != null) {
+        bucket.head = null;
+      }
+    }
+  }
 
   keys() {}
 
