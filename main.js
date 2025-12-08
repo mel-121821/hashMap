@@ -2,7 +2,7 @@ import { HashMap } from "./script.js";
 
 const test = new HashMap();
 
-// test.set("apple", "red"); // bucket 10
+test.set("apple", "red"); // bucket 10
 test.set("banana", "yellow"); // bucket 5
 test.set("carrot", "orange"); // bucket 3
 test.set("dog", "brown"); //bucket 12 (conflict!)
@@ -30,13 +30,15 @@ test.has("turtle");
 
 test.remove("kite");
 test.set("kite", "rainbow");
-test.remove("kite");
+// test.remove("kite");
 
-test.remove("dog");
+// test.remove("dog");
 // test.remove("lion");
 
 test.remove("turtle");
-test.remove("apple");
+// test.remove("apple");
 
-console.log(test);
-console.log(test.buckets);
+// console.log(test);
+// console.log(test.buckets);
+
+console.log(`Total length of keys = ${test.length()}`);
