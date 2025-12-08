@@ -27,17 +27,17 @@ class LinkedList {
   }
 
   size() {
+    let sum = 0;
     if (this.head == null) {
-      this.printError_ListEmpty();
+      // do nothing
     } else {
-      let sum = 0;
       let tmp = this.head;
       while (tmp != null) {
         tmp = tmp.nextNode;
         sum++;
       }
-      return sum;
     }
+    return sum;
   }
 
   header() {
@@ -91,14 +91,15 @@ class LinkedList {
 
   containsKey(key) {
     if (this.head == null) {
-      this.printError_ListEmpty();
+      // this.printError_ListEmpty();
+      return false;
     } else {
       let tmp = this.head;
       while (tmp != null && tmp.key != key) {
         tmp = tmp.nextNode;
       }
       if (tmp == null) {
-        console.log(`${key} was not found`);
+        // console.log(`${key} was not found`);
         return false;
       } else {
         console.log(`Found value: ${tmp.key}`);
@@ -196,6 +197,7 @@ class LinkedList {
       }
       if (current == null) {
         console.log(`There is no key called: ${key}, so nothing was removed`);
+        return false;
       } else {
         console.log(`Removed ${current.key}.`);
         if (prev == null) {
@@ -203,6 +205,7 @@ class LinkedList {
         } else {
           prev.nextNode = current.nextNode;
         }
+        return true;
       }
     }
   }
