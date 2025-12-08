@@ -17,25 +17,9 @@ class HashMap {
     this.capacity = 16;
     this.loadFactor = loadFactor;
 
-    // TODO: Remove following line and replace with fn() that creates a linked list for every element
-
-    // this.buckets = new Array(this.capacity);
-
-    // TODO: (COMPLETE) use Array.from method with mapFn to create the linked list for each element
-
-    // src: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-    // src: https://www.programiz.com/javascript/library/array/from
-
-    // Pseudocode
-    // Array.from(items, mapFn)
-    // items == this.capacity
-    // mapFn == new Linkedlist
     this.buckets = Array.from({ length: this.capacity }, () => {
       return new LinkedList();
     });
-
-    console.log(this.buckets);
-    console.log(this.buckets.length);
   }
 
   // Methods
@@ -94,7 +78,13 @@ class HashMap {
     }
   }
 
-  length() {}
+  length() {
+    let sum = 0;
+    for (const bucket of this.buckets) {
+      sum += bucket.size();
+    }
+    return sum;
+  }
 
   clear() {}
 
