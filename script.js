@@ -94,7 +94,16 @@ class HashMap {
     }
   }
 
-  keys() {}
+  keys() {
+    const allKeys = [];
+    for (const bucket of this.buckets) {
+      const currentKeys = bucket.getKeys();
+      if (currentKeys != null) {
+        allKeys.push(...currentKeys);
+      }
+    }
+    return allKeys;
+  }
 
   values() {}
 
