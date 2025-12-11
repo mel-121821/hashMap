@@ -97,7 +97,7 @@ class HashMap {
   keys() {
     const allKeys = [];
     for (const bucket of this.buckets) {
-      const currentKeys = bucket.getKeys();
+      const currentKeys = bucket.getProperty("key");
       if (currentKeys != null) {
         allKeys.push(...currentKeys);
       }
@@ -105,7 +105,16 @@ class HashMap {
     return allKeys;
   }
 
-  values() {}
+  values() {
+    const allVals = [];
+    for (const bucket of this.buckets) {
+      const currentVals = bucket.getProperty("value");
+      if (currentVals != null) {
+        allVals.push(...currentVals);
+      }
+    }
+    return allVals;
+  }
 
   entries() {}
 }
