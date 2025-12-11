@@ -144,16 +144,14 @@ class LinkedList {
     }
   }
 
-  getKeys() {
-    // return an array of keys to be taken in by calling fn() which will then combine the arrays
-    // use Array.from again??
+  getProperty(propertyName) {
     let keyArr = [];
     if (this.head == null) {
       return null;
     } else {
       let tmp = this.head;
       while (tmp != null) {
-        keyArr.push(tmp.key);
+        keyArr.push(tmp[propertyName]);
         tmp = tmp.nextNode;
       }
     }
