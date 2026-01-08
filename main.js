@@ -2,7 +2,7 @@ import { HashMap } from "./script.js";
 
 const test = new HashMap();
 
-test.set("apple", "red"); // bucket 10
+// test.set("apple", "red"); // bucket 10
 test.set("banana", "yellow"); // bucket 5
 test.set("carrot", "orange"); // bucket 3
 test.set("dog", "brown"); //bucket 12 (conflict!)
@@ -18,10 +18,6 @@ test.set("lion", "tan"); // bucket 12 (duplicate key && conflict !)
 
 // console.log(test.get("apple"));
 
-// TODO: Fix undefined bucket issue
-// if the user tries to access a non-existant element with get() and the bucket does not yet contain a linked list (is undefined) it will not work.
-// Fix by creating a linked list for each bucket from the start
-
 console.log(test.get("jacket"));
 console.log(test.get("sangria"));
 
@@ -36,9 +32,25 @@ test.set("kite", "rainbow");
 // test.remove("lion");
 
 test.remove("turtle");
-// test.remove("apple");
+test.remove("apple");
 
 // console.log(test);
 // console.log(test.buckets);
 
 console.log(`Total length of keys = ${test.length()}`);
+// test.clear();
+console.log(test.keys());
+console.log(test.values());
+console.log(test.entries());
+console.log(test.buckets);
+
+console.log(
+  test.unwrapArr([
+    ["elephant", "gray"],
+    ["carrot", "orange"],
+    [
+      ["dog", "brown"],
+      ["lion", "tan"],
+    ],
+  ])
+);
