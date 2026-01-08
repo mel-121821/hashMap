@@ -18,19 +18,19 @@ Then proceed to create the following methods:
 
 - [x] `remove(key)` takes a key as an argument. If the given key is in the hash map, it should remove the entry with that key and return true. If the key isn’t in the hash map, it should return `false`.
 
-- [] `length()` returns the number of stored keys in the hash map.
+- [x] `length()` returns the number of stored keys in the hash map.
 
-- [] `clear()` removes all entries in the hash map.
+- [x] `clear()` removes all entries in the hash map.
 
-- [] `keys()` returns an array containing all the keys inside the hash map.
+- [x] `keys()` returns an array containing all the keys inside the hash map.
 
-- [] `values()` returns an array containing all the values.
+- [x] `values()` returns an array containing all the values.
 
 - [] `entries()` returns an array that contains each `key, value` pair. Example: `[[firstKey, firstValue], [secondKey, secondValue]]`
 
 #### Test Your Hash Map
 
-- [] Create a new JavaScript file.
+- [x] Create a new JavaScript file.
 
 - [] Create a new instance of your hash map and set the load factor to be `0.75`.
 
@@ -38,7 +38,7 @@ Then proceed to create the following methods:
 const test = new HashMap() // or HashMap() if using a factory
 ```
 
-- [] Populate your hash map using the `set(key, value)` method by copying the following:
+- [x] Populate your hash map using the `set(key, value)` method by copying the following:
 
 ```
 test.set('apple', 'red')
@@ -80,9 +80,24 @@ test.set('moon', 'silver')
 
 ### Resources
 
-Array.from:
+Array.from():
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
 
 https://www.programiz.com/javascript/library/array/from
+
+Array.shift()
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
+
+Array.flat():
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+
+Recursive flattening:
+https://stackoverflow.com/questions/39287320/js-array-concatenation-for-results-of-recursive-flattening
+
+Array.concat():
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+
+Creating an array with recursion:
+https://stackoverflow.com/questions/36413478/how-to-create-an-array-of-a-given-value-recursively
 
 ---
