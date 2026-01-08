@@ -116,7 +116,85 @@ class HashMap {
     return allVals;
   }
 
-  entries() {}
+  // Problem breakdown:
+
+  // When getEntries is called, it returns an array of entries. If only one set of entries is present, there is no issue, but if there are more than one, the entries are nested in an additional array which is then added as is to the final array that is meant to contain all entries
+
+  // These nested elements need to be extracted and pushed to the final product individually
+
+  // Issues:
+
+  // Null values are skipped (solved)
+  // The resulting array of arrays is not iterable, may need to use a recursive fn() to separate the individual entries
+  // The following will not work:
+  // for (const arr of currentEntries.length) {
+  //   allEntries.push(arr);
+  // }
+
+  entries() {
+    const allEntries = [];
+    let finalArr = [];
+    for (const bucket of this.buckets) {
+      const currentEntries = bucket.getEntries();
+
+      if (currentEntries != null) {
+        // console.log(currentEntries);
+        const firstElement = currentEntries[0];
+        const secondElement = currentEntries[1];
+
+        // currentEntries.shift();
+        // console.log(currentEntries);
+
+        // console.log(`First element is:`);
+        // console.log(firstElement);
+        // console.log("is it an arrray?");
+        // console.log(Array.isArray(firstElement));
+        // console.log("First element of first element is:");
+        // console.log(firstElement[0]);
+        // console.log("is array?");
+        // console.log(Array.isArray(firstElement[0]));
+
+        // need a recursive fn() here
+        // if arr contains another arr -> unwrap and step into new arr
+
+        allEntries.push(currentEntries);
+        // finalArr = this.unwrapArr(allEntries);
+      }
+    }
+    // return finalArr;
+    return allEntries;
+  }
+
+  unwrapArr(arr) {
+    // make a copy of arr
+    let copy = arr.slice();
+    let finalArr = [];
+    // base case - arr length == 0
+    if (copy.length == 0) finalArr;
+    // if the first element of copy is not a nested array (aka. is a value, push it to final arr)
+    // used arr.flatten to one level here, otherwise an entry pair will still register as an arr
+    else if (Array.isArray(copy.flat()[0]) === false) {
+      console.log(copy);
+
+      let first = copy.shift();
+      console.log(first);
+
+      // need to use push here, otherwise end result will be undefined
+      finalArr.push(first);
+      console.log(finalArr);
+
+      // if arr.push is used here, it causes an integer to the end of the finalArr (assuming in place of the still incomplete result of this.unwrapArr(copy))
+      return finalArr.concat(this.unwrapArr(copy));
+      // console.log(finalArr);
+    } else {
+      console.log("else block runs to unwrap");
+      console.log(copy[0]);
+
+      return finalArr.concat(this.unwrapArr(copy[0]));
+    }
+    console.log(finalArr);
+    return finalArr;
+  }
 }
 
 export { HashMap };
