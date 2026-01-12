@@ -26,13 +26,13 @@ Then proceed to create the following methods:
 
 - [x] `values()` returns an array containing all the values.
 
-- [] `entries()` returns an array that contains each `key, value` pair. Example: `[[firstKey, firstValue], [secondKey, secondValue]]`
+- [x] `entries()` returns an array that contains each `key, value` pair. Example: `[[firstKey, firstValue], [secondKey, secondValue]]`
 
 #### Test Your Hash Map
 
 - [x] Create a new JavaScript file.
 
-- [] Create a new instance of your hash map and set the load factor to be `0.75`.
+- [x] Create a new instance of your hash map and set the load factor to be `0.75`.
 
 ```
 const test = new HashMap() // or HashMap() if using a factory
@@ -56,11 +56,11 @@ test.set('lion', 'golden')
 
 ```
 
-- [] After populating your hash map with the data above, your hash map’s current load levels should now be at `0.75` (full capacity).
+- [x] After populating your hash map with the data above, your hash map’s current load levels should now be at `0.75` (full capacity).
 
-- [] Now with a full hash map, try overwriting a few nodes using `set(key, value)`. This should only overwrite the existing `values` of your nodes and not add new ones, so `length()` should still return the same value and capacity should remain the same.
+- [x] Now with a full hash map, try overwriting a few nodes using `set(key, value)`. This should only overwrite the existing `values` of your nodes and not add new ones, so `length()` should still return the same value and capacity should remain the same.
 
-- [] After that, populate your hash map with the last node below. This will make your load levels exceed your `load factor`, triggering your hash map’s growth functionality and doubling its `capacity`:
+- [x] After that, populate your hash map with the last node below. This will make your load levels exceed your `load factor`, triggering your hash map’s growth functionality and doubling its `capacity`:
 
 ```
 test.set('moon', 'silver')
