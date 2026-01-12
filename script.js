@@ -16,9 +16,7 @@ class HashMap {
   constructor(loadFactor = 0.75) {
     this.capacity = 16;
     this.loadFactor = loadFactor;
-
     this.maxLoad = this.capacity * loadFactor;
-
     this.buckets = this.createBuckets();
   }
 
@@ -41,31 +39,17 @@ class HashMap {
   }
 
   checkCap() {
-    console.log(this.length());
-    console.log(this.maxLoad);
-    console.log(this.capacity);
     if (this.length() > this.maxLoad) {
-      // Maxload needs to be updated with capacity to avoid an endless loop!
       this.capacity *= 2;
       this.maxLoad = this.capacity * this.loadFactor;
-      console.log(this.maxLoad);
-      console.log(this.capacity);
       this.rehashEntries();
     }
   }
 
   rehashEntries() {
-    // save all entries as an arr with .entries()
-    // clear method is not necessary as the entire map is being overwritten
-    // for (const entries of arr)
-    // call set(entries[0], entries[1])
-
     const allEntries = this.entries();
-    console.log(allEntries);
-    // this.clear();
     this.buckets = this.createBuckets();
     for (const entryPair of allEntries) {
-      console.log(entryPair);
       this.set(entryPair[0], entryPair[1]);
     }
   }
