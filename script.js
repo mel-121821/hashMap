@@ -19,12 +19,15 @@ class HashMap {
 
     this.maxLoad = this.capacity * loadFactor;
 
-    this.buckets = Array.from({ length: this.capacity }, () => {
-      return new LinkedList();
-    });
+    this.buckets = this.createBuckets();
   }
 
   // Methods
+  createBuckets() {
+    return Array.from({ length: this.capacity }, () => {
+      return new LinkedList();
+    });
+  }
 
   hash(key) {
     let hashCode = 0;
@@ -41,35 +44,26 @@ class HashMap {
     console.log(this.length());
     console.log(this.maxLoad);
     console.log(this.capacity);
-    if (this.length() >= this.maxLoad) {
+    if (this.length() > this.maxLoad) {
       // Maxload needs to be updated with capacity to avoid an endless loop!
-
       this.capacity *= 2;
       this.maxLoad = this.capacity * this.loadFactor;
       console.log(this.maxLoad);
-
       console.log(this.capacity);
-      console.log(this.buckets);
       this.rehashEntries();
     }
   }
 
   rehashEntries() {
     // save all entries as an arr with .entries()
-    // clear the hashMap with .clear()
+    // clear method is not necessary as the entire map is being overwritten
     // for (const entries of arr)
-    // console.log(entcries)
     // call set(entries[0], entries[1])
-
-    // Warning! increasing bucket size within this fn() caused an endless loop -
 
     const allEntries = this.entries();
     console.log(allEntries);
     // this.clear();
-    this.buckets = Array.from({ length: this.capacity }, () => {
-      return new LinkedList();
-    });
-
+    this.buckets = this.createBuckets();
     for (const entryPair of allEntries) {
       console.log(entryPair);
       this.set(entryPair[0], entryPair[1]);
@@ -89,12 +83,6 @@ class HashMap {
         this.checkCap();
       }
     }
-    // create a new fn() to increase capacity when loadFactor is exceeded.
-    // Also need a function to rehash and replace all values
-    // Call from set()
-
-    // call doubleCap
-    // call rehashEntries
   }
 
   get(key) {
