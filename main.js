@@ -2,7 +2,7 @@ import { HashMap } from "./script.js";
 
 const test = new HashMap(0.75);
 
-// First 12
+// First 12 items
 test.set("apple", "red"); // bucket 10
 test.set("banana", "yellow"); // bucket 5
 test.set("carrot", "orange"); // bucket 3
@@ -25,30 +25,33 @@ test.set("ice cream", "ripple");
 // Step 6 - Populate your hash map with the last node:
 test.set("moon", "silver");
 
-// console.log(test.get("apple"));
+// Step 7 - entries should be spread evenly among the expanded buckets
 
-// console.log(test.get("jacket"));
-// console.log(test.get("sangria"));
+// Step 8 - Overwrite a few more nodes
+test.set("apple", "gala");
+test.set("frog", "tree");
+test.set("hat", "top");
 
-// test.has("frog");
-// test.has("turtle");
+// Step 9 - Test other methods
 
-// test.remove("kite");
+console.log(test.get("apple"));
+console.log(test.get("jacket"));
+console.log(test.get("sangria"));
 
-// test.remove("kite");
+test.has("frog");
+test.has("turtle");
 
-// test.remove("dog");
-// test.remove("lion");
+test.remove("kite");
+test.remove("dog");
+test.remove("lion");
 
-// test.remove("turtle");
-// test.remove("apple");
+test.remove("turtle");
+test.remove("apple");
 
-// console.log(test);
-// console.log(test.buckets);
+console.log(`Total length of keys = ${test.length()}`);
+// test.clear();
+console.log(test.keys());
+console.log(test.values());
+console.log(test.entries());
 
-// console.log(`Total length of keys = ${test.length()}`);
-// // test.clear();
-// console.log(test.keys());
-// console.log(test.values());
-// console.log(test.entries());
 console.log(test.buckets);
