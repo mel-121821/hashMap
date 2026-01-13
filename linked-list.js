@@ -6,10 +6,6 @@ class LinkedList {
   }
 
   // Methods
-  printError_ListEmpty() {
-    console.log("This list is empty!");
-  }
-
   append(key, value) {
     if (this.head == null) {
       this.head = new Node(key, value);
@@ -20,10 +16,6 @@ class LinkedList {
       }
       tmp.nextNode = new Node(key, value);
     }
-  }
-
-  prepend(value) {
-    this.head = new Node(value, this.head);
   }
 
   size() {
@@ -40,58 +32,8 @@ class LinkedList {
     return sum;
   }
 
-  header() {
-    if (this.head != null) {
-      return this.head;
-    } else {
-      this.printError_ListEmpty();
-    }
-  }
-
-  tail() {
-    if (this.head == null) {
-      this.printError_ListEmpty();
-    } else {
-      let tmp = this.head;
-      while (tmp.nextNode != null) {
-        tmp = tmp.nextNode;
-      }
-      return tmp;
-    }
-  }
-
-  at(index) {
-    if (this.head == null) {
-      this.printError_ListEmpty();
-    } else {
-      let counter = 0;
-      let tmp = this.head;
-      while (counter < index) {
-        tmp = tmp.nextNode;
-        counter++;
-      }
-      return tmp;
-    }
-  }
-
-  pop() {
-    if (this.head == null) {
-      this.printError_ListEmpty();
-    } else {
-      let prev = null;
-      let current = this.head;
-      while (current.nextNode != null) {
-        prev = current;
-        current = current.nextNode;
-      }
-      console.log(`Removed ${current.value}`);
-      prev.nextNode = null;
-    }
-  }
-
   containsKey(key) {
     if (this.head == null) {
-      // this.printError_ListEmpty();
       return false;
     } else {
       let tmp = this.head;
@@ -99,7 +41,7 @@ class LinkedList {
         tmp = tmp.nextNode;
       }
       if (tmp == null) {
-        // console.log(`${key} was not found`);
+        console.log(`${key} was not found`);
         return false;
       } else {
         console.log(`Found value: ${tmp.key}`);
@@ -110,7 +52,8 @@ class LinkedList {
 
   find(key) {
     if (this.head == null) {
-      this.printError_ListEmpty();
+      console.log(`${key} was not found`);
+      return null;
     } else {
       let tmp = this.head;
       while (tmp != null && tmp.key != key) {
@@ -127,7 +70,8 @@ class LinkedList {
 
   changeAtKey(key, value) {
     if (this.head == null) {
-      this.printError_ListEmpty();
+      console.log(`${key} was not found`);
+      return false;
     } else {
       let tmp = this.head;
       while (tmp != null && tmp.key != key) {
@@ -144,59 +88,34 @@ class LinkedList {
     }
   }
 
-  getProperty(propertyName) {
-    let keyArr = [];
+  getProperty(propName) {
+    let propArr = [];
     if (this.head == null) {
       return null;
     } else {
       let tmp = this.head;
       while (tmp != null) {
-        keyArr.push(tmp[propertyName]);
+        propArr.push(tmp[propName]);
         tmp = tmp.nextNode;
       }
     }
-    return keyArr;
+    return propArr;
   }
 
-  toString() {
+  getEntries() {
+    let entriesArr = [];
     if (this.head == null) {
-      this.printError_ListEmpty();
+      return null;
     } else {
       let tmp = this.head;
-      let string = "";
       while (tmp != null) {
-        string += `(${tmp.value}) -> `;
+        const entries = [tmp.key, tmp.value];
+        entriesArr.push(entries);
+        // entriesArr.push(tmp.value);
         tmp = tmp.nextNode;
       }
-      if (tmp == null) {
-        string += "null";
-      }
-      return string;
     }
-  }
-
-  insertAt(value, index) {
-    if (this.head == null) {
-      this.head = new Node(value);
-    } else {
-      let counter = 0;
-      let prev = null;
-      let current = this.head;
-      while (current != null && counter < index) {
-        prev = current;
-        current = current.nextNode;
-        counter++;
-      }
-      if (current == null) {
-        console.log(
-          `Linked list is shorter than ${index}, so ${value} was placed at the end of the list instead`
-        );
-        prev.nextNode = new Node(value);
-      } else {
-        console.log(`${value} was inserted at ${counter}`);
-        prev.nextNode = new Node(value, current);
-      }
-    }
+    return entriesArr;
   }
 
   removeKey(key) {
