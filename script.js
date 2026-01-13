@@ -71,7 +71,6 @@ class HashMap {
 
   get(key) {
     let index = this.hash(key);
-    console.log(index);
     if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bounds");
     } else {
@@ -90,7 +89,6 @@ class HashMap {
 
   remove(key) {
     let index = this.hash(key);
-    console.log(index);
     if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bounds");
     } else {
