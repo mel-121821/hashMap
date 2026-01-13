@@ -66,11 +66,11 @@ test.set('lion', 'golden')
 test.set('moon', 'silver')
 ```
 
-- [] If you have implemented your hash map correctly, the load levels of your expanded hash map should drop well below your load factor, and the entries should be spread evenly among the expanded buckets.
+- [x] If you have implemented your hash map correctly, the load levels of your expanded hash map should drop well below your load factor, and the entries should be spread evenly among the expanded buckets.
 
-- [] With your new hash map, try overwriting a few nodes using `set(key, value)`. Again, this should only overwrite existing `values` of your nodes.
+- [x] With your new hash map, try overwriting a few nodes using `set(key, value)`. Again, this should only overwrite existing `values` of your nodes.
 
-- [] Test the other methods of your hash map, such as `get(key)`, `has(key)`, `remove(key)`, `length()`, `clear()`, `keys()`, `values()`, and `entries()`, to check if they are still working as expected after expanding your hash map.
+- [x] Test the other methods of your hash map, such as `get(key)`, `has(key)`, `remove(key)`, `length()`, `clear()`, `keys()`, `values()`, and `entries()`, to check if they are still working as expected after expanding your hash map.
 
 #### Extra Credit
 
@@ -99,5 +99,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 Creating an array with recursion:
 https://stackoverflow.com/questions/36413478/how-to-create-an-array-of-a-given-value-recursively
+
+Extends Class:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends
 
 ---
