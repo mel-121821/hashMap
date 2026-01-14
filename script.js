@@ -12,7 +12,7 @@
 
 import { LinkedList } from "./linked-list.js";
 
-class HashMap {
+class HashBase {
   constructor(loadFactor = 0.75) {
     this.capacity = 16;
     this.loadFactor = loadFactor;
@@ -42,39 +42,9 @@ class HashMap {
     if (this.length() > this.maxLoad) {
       this.capacity *= 2;
       this.maxLoad = this.capacity * this.loadFactor;
-      this.rehashEntries();
-    }
-  }
-
-  rehashEntries() {
-    const allEntries = this.entries();
-    this.buckets = this.createBuckets();
-    for (const entryPair of allEntries) {
-      this.set(entryPair[0], entryPair[1]);
-    }
-  }
-
-  set(key, value) {
-    let index = this.hash(key);
-    console.log(`${value} ${key} goes to bucket: ${index}`);
-    if (index < 0 || index >= this.buckets.length) {
-      throw new Error("Trying to access index out of bounds");
+      return true;
     } else {
-      if (this.buckets[index].containsKey(key)) {
-        this.buckets[index].changeAtKey(key, value);
-      } else {
-        this.buckets[index].append(key, value);
-        this.checkCap();
-      }
-    }
-  }
-
-  get(key) {
-    let index = this.hash(key);
-    if (index < 0 || index >= this.buckets.length) {
-      throw new Error("Trying to access index out of bounds");
-    } else {
-      return this.buckets[index].find(key);
+      return false;
     }
   }
 
@@ -123,6 +93,82 @@ class HashMap {
     }
     return allKeys;
   }
+}
+
+class HashSet extends HashBase {
+  constructor(loadFactor = 0.75) {
+    super(loadFactor);
+  }
+
+  // Methods
+  set(key) {
+    let index = this.hash(key);
+    console.log(`${key} goes to bucket: ${index}`);
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    } else {
+      if (this.buckets[index].containsKey(key)) {
+        console.log(`${key} at ${this.buckets[index]} already exists`);
+      } else {
+        // bucket.append creates a node in the linked list
+        // node will set null as the value if one is not added, so this should work without changing the linked list fn()
+        this.buckets[index].append(key);
+        if (this.checkCap()) {
+          console.log("true");
+          this.rehashKeys();
+        }
+      }
+    }
+  }
+
+  rehashKeys() {
+    const allKeys = this.keys();
+    this.buckets = this.createBuckets();
+    for (const key of allKeys) {
+      this.set(key);
+    }
+  }
+}
+
+class HashMap extends HashBase {
+  constructor(loadFactor = 0.75) {
+    super(loadFactor);
+  }
+
+  // Methods
+  set(key, value) {
+    let index = this.hash(key);
+    console.log(`${value} ${key} goes to bucket: ${index}`);
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    } else {
+      if (this.buckets[index].containsKey(key)) {
+        this.buckets[index].changeAtKey(key, value);
+      } else {
+        this.buckets[index].append(key, value);
+        if (this.checkCap()) {
+          this.rehashEntries();
+        }
+      }
+    }
+  }
+
+  rehashEntries() {
+    const allEntries = this.entries();
+    this.buckets = this.createBuckets();
+    for (const entryPair of allEntries) {
+      this.set(entryPair[0], entryPair[1]);
+    }
+  }
+
+  get(key) {
+    let index = this.hash(key);
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bounds");
+    } else {
+      return this.buckets[index].find(key);
+    }
+  }
 
   values() {
     const allVals = [];
@@ -148,4 +194,4 @@ class HashMap {
   }
 }
 
-export { HashMap };
+export { HashMap, HashSet };
