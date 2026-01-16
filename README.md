@@ -74,7 +74,7 @@ test.set('moon', 'silver')
 
 #### Extra Credit
 
--[] Create a `HashSet` class or factory function that behaves the same as a `HashMap` but only contains `keys` with no `values`.
+-[x] Create a `HashSet` class or factory function that behaves the same as a `HashMap` but only contains `keys` with no `values`.
 
 ---
 
