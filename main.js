@@ -35,7 +35,6 @@ test_Map.set("frog", "tree");
 test_Map.set("hat", "top");
 
 // Step 9 - test_Map other methods
-
 console.log(test_Map.get("apple"));
 console.log(test_Map.get("jacket"));
 console.log(test_Map.get("sangria"));
@@ -72,6 +71,7 @@ test_Set.set("soda");
 test_Set.set("sunny");
 test_Set.set("starry");
 test_Set.set("fuzzy");
+test_Set.set("blue");
 test_Set.set("blue");
 
 console.log(test_Set.has("day"));
